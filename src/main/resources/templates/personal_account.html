@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Personal Account</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .first-section {
+            padding-top: 2%;
+            height: 150px;
+            background-color: #6969e5;
+        }
+
+        .wrapper-header h1 {
+            text-align: center;
+            font-size: 30px;
+            font-style: italic;
+            color: aliceblue;
+        }
+
+        .return {
+            margin-left: 3%;
+            margin-top: 1.5%;
+        }
+
+        .return button {
+            height: 35px;
+            width: 150px;
+            background-color: snow;
+        }
+
+        .return button:hover {
+            background-color: #6969e5;
+            cursor: pointer;
+            border-radius: 5%;
+        }
+
+        .book-table {
+            padding-top: 5%;
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .book-table th, .book-table td {
+            padding: 10px;
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        .delete-button {
+            width: 120px;
+            height: 30px;
+            background-color: red;
+            color: aliceblue;
+            font-size: 20px;
+        }
+        .delete-button:hover {
+            background-color: #851c1c;
+            cursor: pointer;
+            border-radius: 5%;
+        }
+    </style>
+</head>
+<body>
+<div class="container-header">
+    <div class="wrapper-header">
+        <div class="first-section">
+            <h1>Ваша библиотека</h1>
+            <div class="return" th:object="${user}">
+                <a th:href="@{/book_list/{idUser} (idUser=${user.id})}">
+                    <button>Список книг</button>
+                </a>
+            </div>
+        </div>
+        <div class="second-section">
+            <div class="table">
+                <div class="book-table">
+                    <table class="book-table">
+                        <thead>
+                        <tr>
+                            <th scope="col">Название книги</th>
+                            <th scope="col">Автор книги</th>
+                            <th scope="col">Изображение</th>
+                            <th scope="col">Удалить/Заказать</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="book:${books}">
+                            <td th:text="${book.title}"></td>
+                            <td th:text="${book.author}"></td>
+                            <td>
+                                <img th:src="@{'/book_image/' + ${book.imgBook}}" alt="img-book" width="100">
+                            </td>
+                            <td>
+                                <a th:href="@{/delete_book/{idBook}/{idUser} (idBook=${book.id}, idUser=${user.id})}">
+                                    <button class="delete-button">Удалить</button>
+                                </a>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

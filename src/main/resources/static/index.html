@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Book Store</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .container-header {
+            height: 250px;
+            border-bottom: 1px solid #545151;
+            background-color: #6969e5;
+        }
+
+        .container-header .wrapper-header {
+            display: flex;
+            flex-direction: column;
+            padding-top: 2%;
+        }
+
+        .info-site {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .logo-store {
+            padding-left: 2%;
+            padding-top: 3%;
+            display: flex;
+            justify-content: space-between;
+            gap: 2%;
+        }
+
+        .logo-store h1 {
+            font-size: 30px;
+            font-style: italic;
+            color: aliceblue;
+        }
+
+        .logo-store .img-logo {
+            width: 100px;
+            border-radius: 50%;
+        }
+
+        .references-on__page {
+            padding-right: 5%;
+            padding-top: 3%;
+
+        }
+
+        .references-on__page .list-ref {
+            display: flex;
+            justify-content: space-between;
+            list-style: none;
+            gap: 50%;
+        }
+
+        .list-ref li a {
+            color: aliceblue;
+            font-size: 15px;
+            text-decoration: none;
+        }
+
+        .list-ref li a:hover {
+            color: #202052;
+            cursor: pointer;
+            font-style: italic;
+        }
+
+
+        /*main*/
+        .container-main {
+            height: 600px;
+            background-color: #d0fafa;
+            border-bottom: 1px solid #545151;
+        }
+
+        .wrapper-main {
+            display: flex;
+            flex-direction: column;
+            gap: 5%;
+        }
+
+        .wrapper-main h2 {
+            text-align: center;
+            padding-top: 3%;
+            font-size: 30px;
+            font-style: italic;
+            color: #050536;
+        }
+
+        .books-info__img {
+            padding-top: 3%;
+            display: flex;
+            justify-content: space-between;
+            gap: 10%;
+        }
+
+        .description {
+            margin-left: 2%;
+        }
+
+        .description p {
+            font-style: italic;
+            font-size: 25px;
+        }
+
+        .img-genre {
+            margin-right: 5%;
+        }
+
+        .img-genre .img-genre__img {
+            width: 500px;
+            height: 300px;
+            border-radius: 10%;
+        }
+
+        .img-genre button {
+            margin-left: 6.5%;
+            width: 200px;
+            height: 30px;
+            background-color: snow;
+            color: #6969e5;
+        }
+
+        .img-genre button:hover {
+            border-radius: 5%;
+            background-color: #6969e5;
+            color: #050536;
+            cursor: pointer;
+        }
+
+        /*подвал сайта*/
+        .container-footer {
+            height: 250px;
+            background-color: #4e4eb9;
+        }
+        .wrapper-footer {
+            padding-top: 5%;
+            display: flex;
+            justify-content: space-between;
+            gap: 5%;
+        }
+        .info-footer {
+            margin-left: 2%;
+            margin-bottom: 1.5%;
+            display: flex;
+            justify-content: space-between;
+            gap: 10%;
+        }
+        .info-footer h3 {
+            padding-top: 2%;
+            font-size: 30px;
+            font-style: italic;
+            color: aliceblue;
+        }
+        .info-footer .img-footer {
+            border-radius: 50%;
+            width: 100px;
+        }
+        .description-footer p {
+            font-style: italic;
+            font-size: 25px;
+            color: aliceblue;
+        }
+        .contact {
+            padding-right: 5%;
+            width: 500px;
+        }
+        .contact p {
+            font-style: italic;
+            font-size: 20px;
+            color: aliceblue;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container-header">
+        <div class="wrapper-header">
+            <div class="info-site">
+                <div class="logo-store">
+                    <h1>Book Store</h1>
+                    <div>
+                        <img src="https://avatars.mds.yandex.net/i?id=6406eaa29662a8b95ee4a7f3bc81d68090ada9ec930c4164-12523274-images-thumbs&n=13"
+                             width="100" alt="img-logo" class="img-logo">
+                    </div>
+                </div>
+                <div class="references-on__page">
+                    <ul class="list-ref">
+                        <li>
+                            <div class="img-register__user">
+                                <img src="https://cdn.onlinewebfonts.com/svg/download_99770.png"
+                                     class="register-user" width="30" alt="register user">
+                            </div>
+                            <a href="/register_user">Регистрация</a>
+                        </li>
+                        <li>
+                            <div class="img-personal__account">
+                                <img src="https://cdn.onlinewebfonts.com/svg/img_519969.png"
+                                     class="personal-img__logo" width="30" alt="personal account">
+                            </div>
+                            <a href="/entrance_user">Войти</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<main>
+    <div class="container-main">
+        <div class="wrapper-main">
+            <h2>Добро пожаловать!</h2>
+            <div class="books-info__img">
+                <div class="description">
+                    <p class="description-genre">
+                        Роман — это литературный жанр, чаще прозаический,
+                        зародившийся в средние века у романских народов
+                        как рассказ на народном языке и ныне превратившийся
+                        в самый распространенный вид эпической литературы,
+                        изображающий жизнь человека с её волнующими страстями,
+                        борьбой, социальными противоречиями и стремлениями к идеалу.
+                    </p>
+                </div>
+                <div class="img-genre">
+                    <a href="/roman_book?param=роман" id="ref">
+                        <img src="https://avatars.mds.yandex.net/i?id=e119f1d31ea584d311608278fa4665a33815385e-5248760-images-thumbs&n=13"
+                             class="img-genre__img">
+                    </a>
+                    <button class="prev">Назад</button>
+                    <button class="next">Дальше</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer>
+    <div class="container-footer">
+        <div class="wrapper-footer">
+            <div class="info-footer">
+                <h3>Book Store</h3>
+                <div class="img-logo__footer">
+                    <img src="https://avatars.mds.yandex.net/i?id=6406eaa29662a8b95ee4a7f3bc81d68090ada9ec930c4164-12523274-images-thumbs&n=13"
+                         width="150" alt="logo-image" class="img-footer">
+                </div>
+            </div>
+            <div class="description-footer">
+                <p>
+                    Наш магазин книг очень рад приветствовать новых клиентов. В нашем магазине, Вы, найдете множество
+                    книг
+                    на любой вкус. Book Store предоставляет большой выбор книг. Наши сотрудники всегда будут рады
+                    помочь, Вам,
+                    выбрать ту книгу, которая будет, Вам, по душе. Рады вашему визиту.
+                </p>
+            </div>
+            <div class="contact">
+                <p>Наши кантакты</p>
+                <p>+7(983)-221-89-78</p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>
+    let arrayImg = [
+        'https://avatars.mds.yandex.net/i?id=e119f1d31ea584d311608278fa4665a33815385e-5248760-images-thumbs&n=13',
+        'https://cdn.culture.ru/images/e639eb2d-5d14-560c-a367-b959d66d3b1d',
+        'https://safita.pro/wp-content/uploads/2024/05/magiceskay-kniga.jpg',
+        'https://www.funnyart.club/uploads/posts/2022-10/1666382829_23-www-funnyart-club-p-lirika-kartinki-krasivo-23.jpg'
+    ];
+
+    let arrayRef = [
+        '/roman_book?param=роман',
+        '/detective_book?param=детектив',
+        '/fantasy_book?param=фэнтези',
+        '/lyrics_book?param=лирика'
+    ];
+
+    let arrayDescription = [
+        'Роман — это литературный жанр, чаще прозаический,\n' +
+        'зародившийся в средние века у романских народов\n' +
+        'как рассказ на народном языке и ныне превратившийся\n' +
+        'в самый распространенный вид эпической литературы,\n' +
+        'изображающий жизнь человека с её волнующими страстями,\n' +
+        'борьбой, социальными противоречиями и стремлениями к идеалу.',
+
+        'Детектив (detective) — популярный литературный жанр, характерный для XX века. ' +
+        'Определяется типом сюжета с тайной (mystery) в его основе, которую надлежит расследовать (англ. to detect). ' +
+        'Процесс расследования диктует движение сюжета вспять — действие начинается с загадки, ответ на которую лежит ' +
+        'в прошлом.',
+
+        'Фэнтези — фантастический жанр, который использует мифологические и фольклорные, ' +
+        'а также сказочные мотивы в повествовании.\n' +
+        'В связи с тем, что жанр фэнтези формировался под влиянием британских авторов, ' +
+        'в первую очередь, под влиянием Дж. Р. Р. Толкина, миры фэнтези эстетически близки рыцарскому ' +
+        'Средневековью, но при этом населены вымышленными существами и героями, обладающими сверхъестественными силами.',
+
+        'Лирика – это один из родов литературы, в пределах которого мироотношение персонажа или автора ' +
+        'произведения раскрывается как непосредственное выражение его впечатлений, чувств, мыслей, настроений и т.д. ' +
+        'Лирика, лирическая поэзия воспроизводит субъективное личное отношение автора к чему-либо или его настроение.'
+    ];
+
+    /*
+    изображение
+     */
+    let imgGenre = document.querySelector(".img-genre__img");
+    let indexArrayImg = 0;
+
+    /*
+    ссылки
+     */
+    let ref = document.getElementById('ref');
+    let indexRef = 0;
+
+    /*
+    описание
+     */
+    let description = document.querySelector(".description-genre");
+    let indexArrayDescription = 0;
+
+    // кнопка: дальше
+    let buttonNextValue = document.querySelector(".next");
+    buttonNextValue.addEventListener('click', () => {
+        // работа с изображением
+        indexArrayImg++;
+        if (indexArrayImg >= arrayImg.length) {
+            indexArrayImg = 0;
+        }
+        imgGenre.src = arrayImg[indexArrayImg];
+        if (indexArrayImg >= arrayImg.length - 1) {
+            indexArrayImg = -1;
+        }
+
+        // работа с ссылками
+        indexRef++;
+        if (indexRef >= arrayRef.length) {
+            indexRef = 0;
+        }
+        ref.setAttribute('href', arrayRef[indexRef]);
+        if (indexRef >= arrayRef.length - 1) {
+            indexRef = -1;
+        }
+
+        // работа с описанием
+        indexArrayDescription++;
+        if (indexArrayDescription >= arrayDescription.length) {
+            indexArrayDescription = 0;
+        }
+        description.textContent = arrayDescription[indexArrayDescription];
+        if (indexArrayDescription >= arrayDescription.length - 1) {
+            indexArrayDescription = -1;
+        }
+    });
+
+    // кнопка: назад
+    let buttonPreviousValue = document.querySelector(".prev");
+    buttonPreviousValue.addEventListener('click', () => {
+        // работа с изображением
+        indexArrayImg--;
+        if (indexArrayImg < 0) {
+            indexArrayImg = arrayImg.length - 1;
+        }
+        imgGenre.src = arrayImg[indexArrayImg];
+
+        // работа с ссылками
+        indexRef--;
+        if (indexRef < 0) {
+            indexRef = arrayRef.length - 1;
+        }
+        ref.setAttribute("href", arrayRef[indexRef]);
+
+        // работа с описание
+        indexArrayDescription--;
+        if (indexArrayDescription < 0) {
+            indexArrayDescription = arrayDescription.length - 1;
+        }
+        description.textContent = arrayDescription[indexArrayDescription];
+    });
+
+</script>
+</body>
+</html>

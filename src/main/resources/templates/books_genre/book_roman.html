@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Roman Genre</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        .wrapper {
+            padding-top: 3%;
+        }
+        .wrapper h1 {
+            text-align: center;
+            font-size: 30px;
+            font-style: italic;
+        }
+        .book-table {
+            padding-top: 5%;
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .book-table th, .book-table td {
+            padding: 10px;
+            text-align: center;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="wrapper">
+        <h1>Романы</h1>
+        <div class="book-table">
+            <table class="book-table">
+                <thead>
+                <tr>
+                    <th scope="col">Название книги</th>
+                    <th scope="col">Автор книги</th>
+                    <th scope="col">Изображение</th>
+                    <th scope="col">Добавить/Посмотреть</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="book:${booksGenreRoman}">
+                    <td th:text="${book.title}"></td>
+                    <td th:text="${book.author}"></td>
+                    <td>
+                        <img th:src="@{'/book_image/' + ${book.imgBook}}" width="100">
+                    </td>
+                    <td>
+                        <a th:href="@{/save_book/{idBook}(idBook=${book.id})}">
+                            <button>Добавить книгу</button>
+                        </a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>

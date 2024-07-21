@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Entrance</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        .container-header {
+            height: 350px;
+        }
+        .wrapper-header {
+            padding-top: 2%;
+            display: flex;
+            flex-direction: column;
+        }
+        .wrapper-header h1 {
+            text-align: center;
+            font-size: 30px;
+            font-style: italic;
+        }
+        .in-data__user {
+            padding-top: 3%;
+            display: flex;
+            justify-content: center;
+        }
+        .input-data label {
+            font-size: 25px;
+            font-style: italic;
+        }
+        .input-data input {
+            width: 300px;
+            height: 20px;
+        }
+        .submit {
+            padding-top: 3%;
+            display: flex;
+            justify-content: center;
+        }
+        .submit .button-submit {
+            height: 25px;
+            width: 300px;
+        }
+        .submit .button-submit:hover {
+            cursor: pointer;
+            background-color: yellowgreen;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <div class="container-header">
+        <div class="wrapper-header">
+            <h1>Вход</h1>
+            <div class="in-data__user">
+                <form th:action="@{/entrance}" th:object="${user}" method="post">
+                    <div class="input-data">
+                        <label>Введите ваш email</label><br>
+                        <input type="email" th:field="*{email}"><br><br>
+
+                        <label>Введите ваш пароль</label><br>
+                        <input type="password" th:field="*{password}">
+                    </div>
+                    <div class="submit">
+                        <button class="button-submit" type="submit">Отправить</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</header>
+</body>
+</html>

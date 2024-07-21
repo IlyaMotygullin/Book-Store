@@ -1,0 +1,76 @@
+package com.example.demo.controller;
+
+import com.example.demo.entity.Book;
+import com.example.demo.entity.User;
+import com.example.demo.service.book_service.BookService;
+import com.example.demo.service.user_service.UserService;
+import lombok.AccessLevel;
+import lombok.experimental.FieldDefaults;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+
+import java.util.Set;
+import java.util.logging.Logger;
+
+@Controller(value = "userController")
+@FieldDefaults(level = AccessLevel.PRIVATE)
+public class UserController {
+    final UserService userService;
+    final BookService bookService;
+
+    public UserController(UserService userService, BookService bookService) {
+        this.userService = userService;
+        this.bookService = bookService;
+    }
+    /*
+    добавление книг и перенаправление пользователя на страницу с книгами
+     */
+    @GetMapping("/add_book/{idBook}/{idUser}")
+    public String addBook(@PathVariable long idBook, @PathVariable long idUser) {
+        Logger.getLogger(BookShopController.class.getName()).info("Книга: " + bookService.getBookById(idBook));
+        Logger.getLogger(BookShopController.class.getName()).info("Пользователь: " + userService.getUserById(idUser));
+
+        User getUser = userService.getUserById(idUser);
+        Book getBook = bookService.getBookById(idBook);
+
+        getBook.getUserSet().add(getUser);
+        getUser.getBookSet().add(getBook);
+
+        userService.saveUser(getUser);
+        bookService.saveBook(getBook);
+        return "redirect:/book_list/" + userService.getUserById(idUser).getId();
+    }
+
+    /*
+    отображение всех книг пользователя
+     */
+    @GetMapping("/personal_account/{idUser}")
+    public String personalAccountUsers(@PathVariable long idUser, Model model) {
+        Set<Book> bookList = userService.getUserById(idUser).getBookSet();
+        model.addAttribute("books", bookList);
+        model.addAttribute("user", userService.getUserById(idUser));
+        return "personal_account";
+    }
+
+    /*
+    удаление книги
+     */
+    @GetMapping("/delete_book/{idBook}/{idUser}")
+    public String deleteBook(@PathVariable long idBook, @PathVariable long idUser) {
+        User getUser = userService.getUserById(idUser);
+        Book getBook = bookService.getBookById(idBook);
+
+        Logger.getLogger(UserController.class.getName()).info("Пользователь: " + getUser);
+        Logger.getLogger(UserController.class.getName()).info("Книга: " + getBook);
+
+        getUser.getBookSet().remove(getBook);
+        getBook.getUserSet().remove(getUser);
+
+        userService.saveUser(getUser);
+        bookService.saveBook(getBook);
+
+        return "redirect:/personal_account/" + getUser.getId();
+    }
+}

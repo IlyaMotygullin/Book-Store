@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register User</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .container-header {
+            height: 350px;
+        }
+
+        .container-header .wrapper-header {
+            padding-top: 2%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .wrapper-header h1 {
+            text-align: center;
+            font-size: 30px;
+            font-style: italic;
+        }
+
+        .in-data__user {
+            display: flex;
+            justify-content: center;
+            padding-top: 2%;
+        }
+
+        .in-name__user label {
+            font-size: 20px;
+            font-style: italic;
+        }
+
+        .in-name__user input {
+            width: 300px;
+            height: 20px;
+        }
+        .in-lastname__user label {
+            font-size: 20px;
+            font-style: italic;
+        }
+
+        .in-lastname__user input {
+            width: 300px;
+            height: 20px;
+        }
+        .in-email__user label {
+            font-size: 20px;
+            font-style: italic;
+        }
+
+        .in-email__user input {
+            width: 300px;
+            height: 20px;
+        }
+        .in-password__user label {
+            font-size: 20px;
+            font-style: italic;
+        }
+
+        .in-password__user input {
+            width: 300px;
+            height: 20px;
+        }
+        .submit {
+            padding-top: 3%;
+            display: flex;
+            justify-content: center;
+        }
+        .button-submit {
+            width: 300px;
+            height: 25px;
+            font-style: italic;
+        }
+        .button-submit:hover {
+            cursor: pointer;
+            border-radius: 2%;
+            background-color: yellowgreen;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <div class="container-header">
+        <div class="wrapper-header">
+            <h1>Регистрация</h1>
+            <div class="in-data__user">
+                <form th:action="@{/register}" th:object="${user}" method="post" class="form-user">
+                    <div class="in-name__user">
+                        <label>Введите свое имя</label><br>
+                        <input type="text" th:field="*{name}" width="250"><br><br>
+                    </div>
+                    <div class="in-lastname__user">
+                        <label>Введите свою фамилию</label><br>
+                        <input type="text" th:field="*{lastname}"><br><br>
+                    </div>
+                    <div class="in-email__user">
+                        <label>Введите свой email</label><br>
+                        <input th:field="*{email}"><br><br>
+                    </div>
+                    <div class="in-password__user">
+                        <label>Введите свой пароль</label><br>
+                        <input th:field="*{password}">
+                    </div>
+                    <div class="submit">
+                        <button class="button-submit"  type="submit">Отправить</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</header>
+</body>
+</html>
