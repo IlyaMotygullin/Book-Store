@@ -37,9 +37,30 @@ public class BookController {
         return "books_genre/book_roman";
     }
 
+    @GetMapping("/detective_book")
+    public String getDetectiveBook(@RequestParam(value = "param") String detective, Model model) {
+        List<Book> bookList = bookService.filterBookByGenre(detective);
+        model.addAttribute("booksGenreDetective", bookList);
+        return "books_genre/book_detective";
+    }
+
+    @GetMapping("/fantasy_book")
+    public String getFantasyBook(@RequestParam(value = "param") String fantasy, Model model) {
+        List<Book> bookList = bookService.filterBookByGenre(fantasy);
+        model.addAttribute("booksGenreFantasy", bookList);
+        return "books_genre/book_fantasy";
+    }
+
+    @GetMapping("/lyrics_book")
+    public String getLyricsBook(@RequestParam(value = "param") String lyrics, Model model) {
+        List<Book> bookList = bookService.filterBookByGenre(lyrics);
+        model.addAttribute("booksGenreLyrics", bookList);
+        return "books_genre/book_lyrics";
+    }
+
     @GetMapping("/save_book/{idBook}")
-    public String saveBook(@PathVariable long idBook, HttpSession session) {
-        User user = (User) session.getAttribute("user"); // получение пользователя
+    public String saveBookGenre(@PathVariable long idBook, HttpSession session) {
+        User user = (User) session.getAttribute("user");
         if (user == null) {
             return "redirect:/register_user";
         }
@@ -50,43 +71,6 @@ public class BookController {
 
         bookService.saveBook(getBook);
         userService.saveUser(user);
-        return "redirect:/roman_book?param=роман";
+        return "redirect:/book_list/" + user.getId();
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//    @GetMapping("/detective_book")
-//    public String getDetectiveBook(@RequestParam(value = "param") String detective, Model model) {
-//        List<Book> bookList = bookService.filterBookByGenre(detective);
-//        model.addAttribute("booksGenreDetective", bookList);
-//        return "books_genre/book_detective";
-//    }
-//
-//    @GetMapping("/fantasy_book")
-//    public String getFantasyBook(@RequestParam(value = "param") String fantasy, Model model) {
-//        List<Book> bookList = bookService.filterBookByGenre(fantasy);
-//        model.addAttribute("booksGenreFantasy", bookList);
-//        return "books_genre/book_fantasy";
-//    }
-//
-//    @GetMapping("/lyrics_book")
-//    public String getLyricsBook(@RequestParam(value = "param") String lyrics, Model model) {
-//        List<Book> bookList = bookService.filterBookByGenre(lyrics);
-//        model.addAttribute("booksGenreLyrics", bookList);
-//        return "books_genre/book_lyrics";
-//    }
 }

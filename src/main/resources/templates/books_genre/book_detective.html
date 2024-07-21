@@ -49,12 +49,12 @@
                     <td>
                         <img th:src="@{'/book_image/' + ${book.imgBook}}" alt="img-book" width="100">
                     </td>
-<!--                    <td th:object="${user}">-->
-<!--                        <a th:href="@{/add_book/{idBook}/{idUser}(idBook=${book.id}, idUser=${user.id})}">-->
-<!--                            <button class="add-button">Добавить</button>-->
-<!--                        </a>-->
-<!--                        <button class="check-description">Описание</button>-->
-<!--                    </td>-->
+                    <td>
+                        <a th:href="@{/save_book/{idBook} (idBook=${book.id})}">
+                            <button class="add-button">Добавить</button>
+                        </a>
+                        <button class="check-description">Описание</button>
+                    </td>
                 </tr>
                 </tbody>
             </table>
