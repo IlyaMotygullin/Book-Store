@@ -43,6 +43,9 @@ public class User {
             )
     Set<Book> bookSet = new HashSet<>();
 
+    @ManyToMany
+    Set<Order> orders = new HashSet<>();
+
     public User(String name, String lastname, String email, String password) {
         this.name = name;
         this.lastname = lastname;

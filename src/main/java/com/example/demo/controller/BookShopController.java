@@ -69,7 +69,7 @@ public class BookShopController {
          */
         User getUser = userService.getUserByEmailAndPassword(user.getEmail(), user.getPassword());
         Logger.getLogger(BookShopController.class.getName()).info("Пользователь: " + getUser);
-        if (getUser.getEmail().equals("admin@yandex.ru") && getUser.getPassword().equals("1111")) {
+        if (getUser.getEmail().equals("admin@yandex.ru") && getUser.getPassword().equals("11122")) {
             return "redirect:/admin";
         }
         return "redirect:/book_list/" + getUser.getId();

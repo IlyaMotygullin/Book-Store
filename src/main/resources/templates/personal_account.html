@@ -21,12 +21,18 @@
             font-style: italic;
             color: aliceblue;
         }
-
+        .buttons {
+            display: flex;
+            justify-content: space-between;
+        }
         .return {
             margin-left: 3%;
             margin-top: 1.5%;
         }
-
+        .orders {
+            margin-right: 3%;
+            margin-top: 1.5%;
+        }
         .return button {
             height: 35px;
             width: 150px;
@@ -38,7 +44,16 @@
             cursor: pointer;
             border-radius: 5%;
         }
-
+        .orders button {
+            height: 35px;
+            width: 150px;
+            background-color: snow;
+        }
+        .orders button:hover {
+            background-color: #6969e5;
+            cursor: pointer;
+            border-radius: 5%;
+        }
         .book-table {
             padding-top: 5%;
             width: 100%;
@@ -70,10 +85,17 @@
     <div class="wrapper-header">
         <div class="first-section">
             <h1>Ваша библиотека</h1>
-            <div class="return" th:object="${user}">
-                <a th:href="@{/book_list/{idUser} (idUser=${user.id})}">
-                    <button>Список книг</button>
-                </a>
+            <div class="buttons">
+                <div class="return" th:object="${user}">
+                    <a th:href="@{/book_list/{idUser} (idUser=${user.id})}">
+                        <button>Список книг</button>
+                    </a>
+                </div>
+                <div class="orders">
+                    <a th:href="@{/create_order/{idUser} (idUser=${user.id})}">
+                        <button>Сделать заказ</button>
+                    </a>
+                </div>
             </div>
         </div>
         <div class="second-section">
@@ -85,7 +107,7 @@
                             <th scope="col">Название книги</th>
                             <th scope="col">Автор книги</th>
                             <th scope="col">Изображение</th>
-                            <th scope="col">Удалить/Заказать</th>
+                            <th scope="col">Удалить</th>
                         </tr>
                         </thead>
                         <tbody>

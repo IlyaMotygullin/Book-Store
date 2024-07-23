@@ -18,10 +18,6 @@ import java.util.List;
 @Controller(value = "bookController")
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class BookController {
-    /*
-    TODO: реализовать вход или регистрацию, когда пользователь добовляет книги в лк
-    TODO: реализовать заказ для пользователя
-     */
     final BookService bookService;
     final UserService userService;
 
