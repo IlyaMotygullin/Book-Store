@@ -34,4 +34,12 @@ public class Admin {
         this.email = email;
         this.password = password;
     }
+
+    @Override
+    public String toString() {
+        return "Admin{" +
+                "email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                '}';
+    }
 }

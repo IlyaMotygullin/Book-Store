@@ -1,7 +1,9 @@
 package com.example.demo.controller;
 
+import com.example.demo.entity.Admin;
 import com.example.demo.entity.Book;
 import com.example.demo.entity.User;
+import com.example.demo.service.admin_service.AdminService;
 import com.example.demo.service.book_service.BookService;
 import com.example.demo.service.user_service.UserService;
 import lombok.AccessLevel;
@@ -15,7 +17,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
-import java.util.Set;
 import java.util.logging.Logger;
 
 @Controller
@@ -69,6 +70,8 @@ public class BookShopController {
          */
         User getUser = userService.getUserByEmailAndPassword(user.getEmail(), user.getPassword());
         Logger.getLogger(BookShopController.class.getName()).info("Пользователь: " + getUser);
+
+        /*Создание админа*/
         if (getUser.getEmail().equals("admin@yandex.ru") && getUser.getPassword().equals("11122")) {
             return "redirect:/admin";
         }

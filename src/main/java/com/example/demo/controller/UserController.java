@@ -1,8 +1,10 @@
 package com.example.demo.controller;
 
+import com.example.demo.entity.Admin;
 import com.example.demo.entity.Book;
 import com.example.demo.entity.Order;
 import com.example.demo.entity.User;
+import com.example.demo.service.admin_service.AdminService;
 import com.example.demo.service.book_service.BookService;
 import com.example.demo.service.order_service.OrderService;
 import com.example.demo.service.user_service.UserService;
@@ -13,7 +15,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
-import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
@@ -26,11 +27,13 @@ public class UserController {
     final UserService userService;
     final BookService bookService;
     final OrderService orderService;
+    final AdminService adminService;
 
-    public UserController(UserService userService, BookService bookService, OrderService orderService) {
+    public UserController(UserService userService, BookService bookService, OrderService orderService, AdminService adminService) {
         this.userService = userService;
         this.bookService = bookService;
         this.orderService = orderService;
+        this.adminService = adminService;
     }
     /*
     добавление книг и перенаправление пользователя на страницу с книгами
@@ -73,6 +76,7 @@ public class UserController {
     @GetMapping("/create_order/{idUser}")
     public String createOrder(@PathVariable long idUser) {
         User getUser = userService.getUserById(idUser);
+        Admin admin = adminService.getAdminById(1);
         Logger.getLogger(UserController.class.getName()).info("User: " + getUser);
 
         /*
@@ -84,6 +88,13 @@ public class UserController {
         order.getUserSet().add(getUser);
         getUser.getOrders().add(order);
 
+        /*
+        добавление заказа для админа
+         */
+        order.setAdmin(admin);
+        admin.getOrderList().add(order);
+
+        adminService.createAdmin(admin);
         userService.saveUser(getUser);
         orderService.createOrder(order);
 
