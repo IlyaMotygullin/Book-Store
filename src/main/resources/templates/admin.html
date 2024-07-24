@@ -3,8 +3,186 @@
 <head>
     <meta charset="UTF-8">
     <title>Admin</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .container-header {
+            height: 150px;
+            width: 100%;
+            background-color: #6969e5;
+        }
+
+        .wrapper-header {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .wrapper-header h1 {
+            text-align: center;
+            padding-top: 2%;
+            color: snow;
+            font-size: 35px;
+            font-style: italic;
+        }
+
+        .first-section {
+            padding-top: 3%;
+            display: flex;
+            flex-direction: column;
+            height: 300px;
+            width: 100%;
+            border-bottom: 1px solid #3b3939;
+            gap: 5%;
+        }
+
+        .first-section h2 {
+            text-align: center;
+            font-size: 30px;
+            font-style: italic;
+        }
+
+        .first-section .work-orders {
+            display: flex;
+            justify-content: space-between;
+            gap: 10%;
+        }
+        .work-orders {
+            margin-left: 3%;
+            margin-right: 3%;
+            margin-top: 3%;
+        }
+        .work-orders p {
+            margin-top: 2%;
+            font-size: 29px;
+            font-style: italic;
+        }
+        .work-orders .img-ref__orders img {
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        .second-section .work-users {
+            display: flex;
+            justify-content: space-between;
+            gap: 10%;
+        }
+        .second-section {
+            padding-top: 3%;
+            display: flex;
+            flex-direction: column;
+            height: 300px;
+            width: 100%;
+            border-bottom: 1px solid #3b3939;
+            gap: 5%;
+        }
+        .second-section h2 {
+            text-align: center;
+            font-size: 30px;
+            font-style: italic;
+        }
+
+        .work-users {
+            margin-left: 3%;
+            margin-right: 3%;
+            margin-top: 3%;
+        }
+        .work-users p {
+            margin-top: 2%;
+            font-size: 29px;
+            font-style: italic;
+        }
+        .work-users .img-ref__users img {
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .three-section {
+            padding-top: 3%;
+            display: flex;
+            flex-direction: column;
+            height: 300px;
+            width: 100%;
+            border-bottom: 1px solid #3b3939;
+            gap: 5%;
+        }
+        .three-section h2 {
+            text-align: center;
+            font-size: 30px;
+            font-style: italic;
+        }
+        .work-books {
+            display: flex;
+            justify-content: space-between;
+            gap: 10%;
+            margin-left: 3%;
+            margin-right: 3%;
+            margin-top: 3%;
+        }
+        .work-books p {
+            margin-top: 2%;
+            font-size: 29px;
+            font-style: italic;
+        }
+        .work-books .img-logo {
+            border-radius: 50%;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
-<h1>Admin</h1>
+<header>
+    <div class="container-header">
+        <div class="wrapper-header">
+            <h1>Добро пожаловать!</h1>
+        </div>
+    </div>
+</header>
+
+<main>
+    <div class="container-main">
+        <div class="wrapper-main">
+            <div class="first-section">
+                <h2>Заказы</h2>
+                <div class="work-orders">
+                    <p>В этом разделе, Вы, сможете управлять заказами.</p>
+                    <div class="img-ref__orders">
+                        <a th:href="@{/check_orders}">
+                            <img src="https://e7.pngegg.com/pngimages/876/563/png-clipart-purchasing-computer-icons-purchase-order-bank-purchase-requisition-bank-blue-company.png"
+                                 width="150" class="img-logo" alt="img-order">
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="second-section">
+                <h2>Пользователи</h2>
+                <div class="work-users">
+                    <p>В этом разделе, Вы, сможете управлять пользователями.</p>
+                    <div class="img-ref__users">
+                        <a th:href="@{/check_users}">
+                            <img src="https://avatars.mds.yandex.net/i?id=46a37f64ff2c5d5f1bb02dca16cdea485dc5138e-10142109-images-thumbs&n=13"
+                                 width="150" class="img-logo" alt="img-user">
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="three-section">
+                <h2>Книги</h2>
+                <div class="work-books">
+                    <p>В этом разделе, Вы, сможете управлять книгами.</p>
+                    <div class="img-ref__books">
+                        <a th:href="@{/check_books}">
+                            <img src="https://avatars.mds.yandex.net/i?id=7cec5310a0bab48be9af8dbe59fd687220c0ee30-12540799-images-thumbs&n=13"
+                                 width="150" class="img-logo" alt="img-book">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
 </body>
 </html>

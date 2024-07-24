@@ -7,6 +7,8 @@ import lombok.AccessLevel;
 import lombok.experimental.FieldDefaults;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service(value = "userService")
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class UserServiceImpl implements UserService {
@@ -29,5 +31,15 @@ public class UserServiceImpl implements UserService {
     @Override
     public User getUserByEmailAndPassword(String email, String password) {
         return repository.findUserByEmailAndPassword(email, password);
+    }
+
+    @Override
+    public List<User> getUserList() {
+        return repository.findAll();
+    }
+
+    @Override
+    public void deleteUser(User user) {
+        repository.delete(user);
     }
 }

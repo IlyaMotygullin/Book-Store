@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Пользователи</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .container {
+            padding-top: 2%;
+        }
+
+        .wrapper {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .wrapper h1 {
+            text-align: center;
+            font-style: italic;
+            font-size: 30px;
+        }
+
+        .book-table {
+            margin-top: 3%;
+        }
+
+        .full-width-table {
+            width: 100%;
+            border-collapse: collapse; /* Объединение границ ячеек */
+        }
+
+        .full-width-table th, .full-width-table td {
+            border: 1px solid #ddd; /* Границы ячеек */
+            padding: 8px; /* Отступы внутри ячеек */
+            text-align: left; /* Выравнивание текста */
+        }
+
+        .delete-user {
+            height: 30px;
+            width: 150px;
+            background-color: #d20f0f;
+            color: snow;
+        }
+
+        .delete-user:hover {
+            cursor: pointer;
+            background-color: #7c0909;
+            border-radius: 5%;
+        }
+
+        .button-exit {
+            margin-top: 2%;
+            margin-right: 3%;
+            display: flex;
+            justify-content: right;
+        }
+
+        .exit {
+            height: 30px;
+            width: 150px;
+            border-radius: 5%;
+            background-color: #6969e5;
+            color: snow;
+        }
+        .exit:hover {
+            cursor: pointer;
+            border-radius: 10%;
+            background-color: #191972;
+        }
+
+        /*.book-table {*/
+        /*    display: flex;*/
+        /*    justify-content: center;*/
+        /*    padding-top: 5%;*/
+        /*    max-width: 100%;*/
+        /*    border-collapse: collapse;*/
+        /*}*/
+        /*.book-table th, .book-table td {*/
+        /*    padding: 10px;*/
+        /*    text-align: center;*/
+        /*    vertical-align: middle;*/
+        /*}*/
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="wrapper">
+        <h1>Список пользователей</h1>
+        <div class="book-table">
+            <table class="full-width-table">
+                <thead>
+                <tr>
+                    <th scope="col">Имя пользователя</th>
+                    <th scope="col">Фамилия пользователя</th>
+                    <th scope="col">Email пользователя</th>
+                    <th scope="col">Пароль</th>
+                    <th scope="col">Удалить</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="user:${users}">
+                    <td th:text="${user.name}"></td>
+                    <td th:text="${user.lastname}"></td>
+                    <td th:text="${user.email}"></td>
+                    <td th:text="${user.password}"></td>
+                    <td>
+                        <a th:href="@{/delete_user/{idUser} (idUser=${user.id})}">
+                            <button class="delete-user">Удалить</button>
+                        </a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="button-exit">
+            <a th:href="@{/admin}">
+                <button class="exit">Назад</button>
+            </a>
+        </div>
+    </div>
+</div>
+</body>
+</html>
