@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Order List</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .container {
+            padding-top: 2%;
+        }
+
+        .wrapper {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .wrapper h1 {
+            text-align: center;
+            font-style: italic;
+            font-size: 30px;
+        }
+
+        .order-table {
+            margin-top: 3%;
+        }
+
+        .full-width-table {
+            width: 100%;
+            border-collapse: collapse; /* Объединение границ ячеек */
+        }
+
+        .full-width-table th, .full-width-table td {
+            border: 1px solid #ddd; /* Границы ячеек */
+            padding: 8px; /* Отступы внутри ячеек */
+            text-align: left; /* Выравнивание текста */
+        }
+
+        .delete-order {
+            height: 30px;
+            width: 150px;
+            background-color: #d20f0f;
+            color: snow;
+        }
+        .info-order {
+            height: 30px;
+            width: 150px;
+            background-color: #2e2ece;
+            color: snow;
+        }
+        .info-order:hover {
+            cursor: pointer;
+            background-color: #0f0f60;
+            border-radius: 5%;
+        }
+        .delete-order:hover {
+            cursor: pointer;
+            background-color: #7c0909;
+            border-radius: 5%;
+        }
+
+        .button-exit {
+            margin-top: 2%;
+            margin-right: 3%;
+            display: flex;
+            justify-content: right;
+        }
+
+        .exit {
+            height: 30px;
+            width: 150px;
+            border-radius: 5%;
+            background-color: #6969e5;
+            color: snow;
+        }
+        .exit:hover {
+            cursor: pointer;
+            border-radius: 10%;
+            background-color: #191972;
+        }
+
+
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="wrapper">
+        <h1>Список заказов</h1>
+        <div class="order-table">
+            <table class="full-width-table">
+                <thead>
+                <tr>
+                    <th scope="col">Дата заказа</th>
+                    <th scope="col">Удалить/Информация</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="order:${orders}">
+                    <td th:text="${order.date}"></td>
+                    <td>
+                       <a th:href="@{/delete_order/{idOrder} (idOrder=${order.id})}">
+                           <button class="delete-order">Удалить</button>
+                       </a>
+                        <a th:href="@{/info_order/{idOrder} (idOrder=${order.id})}">
+                            <button class="info-order">Информация</button>
+                        </a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="button-exit">
+            <a th:href="@{/admin}">
+                <button class="exit">Назад</button>
+            </a>
+        </div>
+    </div>
+</div>
+</body>
+</html>

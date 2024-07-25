@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Order info</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .container {
+            padding-top: 2%;
+        }
+
+        .wrapper {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .wrapper h1 {
+            text-align: center;
+            font-style: italic;
+            font-size: 30px;
+        }
+
+        .clients-table {
+            margin-top: 3%;
+        }
+
+        .full-width-table {
+            width: 100%;
+            border-collapse: collapse; /* Объединение границ ячеек */
+        }
+
+        .full-width-table th, .full-width-table td {
+            border: 1px solid #ddd; /* Границы ячеек */
+            padding: 8px; /* Отступы внутри ячеек */
+            text-align: left; /* Выравнивание текста */
+        }
+        .exit {
+            margin-top: 3%;
+            margin-left: 3%;
+            height: 30px;
+            width: 150px;
+            border-radius: 5%;
+            background-color: #6969e5;
+            color: snow;
+        }
+        .exit:hover {
+            cursor: pointer;
+            border-radius: 10%;
+            background-color: #191972;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="wrapper">
+        <h1>Клиенты</h1>
+        <div class="clients-table">
+            <table class="full-width-table">
+                <thead>
+                <tr>
+                    <th>Имя пользователя</th>
+                    <th>Фамилия пользователя</th>
+                    <th>Email пользователя</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="user:${users}">
+                    <td th:text="${user.name}"></td>
+                    <td th:text="${user.lastname}"></td>
+                    <td th:text="${user.email}"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="button-exit">
+            <a th:href="@{/exit}">
+                <button class="exit">Назад</button>
+            </a>
+        </div>
+    </div>
+</div>
+</body>
+</html>
