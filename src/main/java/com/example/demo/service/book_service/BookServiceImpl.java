@@ -31,6 +31,11 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
+    public void deleteBook(Book book) {
+        repository.delete(book);
+    }
+
+    @Override
     public List<Book> getBookList() {
         return repository.findAll();
     }

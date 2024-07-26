@@ -1,15 +1,20 @@
 package com.example.demo.controller;
 
+import com.example.demo.entity.Book;
 import com.example.demo.entity.Order;
 import com.example.demo.entity.User;
+import com.example.demo.service.book_service.BookService;
 import com.example.demo.service.order_service.OrderService;
 import com.example.demo.service.user_service.UserService;
 import lombok.AccessLevel;
+import lombok.SneakyThrows;
 import lombok.experimental.FieldDefaults;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
 import java.util.Set;
@@ -23,10 +28,12 @@ public class AdminController {
 
     final UserService userService;
     final OrderService orderService;
+    final BookService bookService;
 
-    public AdminController(UserService userService, OrderService orderService) {
+    public AdminController(UserService userService, OrderService orderService, BookService bookService) {
         this.userService = userService;
         this.orderService = orderService;
+        this.bookService = bookService;
     }
 
     /*
@@ -95,5 +102,43 @@ public class AdminController {
     @GetMapping("/exit")
     public String exit() {
         return "redirect:/check_orders";
+    }
+
+    /*
+    показ всех книг
+     */
+    @GetMapping("/check_books")
+    public String showBooks(Model model) {
+        List<Book> bookList = bookService.getBookList();
+        model.addAttribute("books", bookList);
+        return "admin/books";
+    }
+
+    /*
+    добавить книгу
+     */
+    @GetMapping("/create_book")
+    public String createBooks(Model model) {
+        Book book = new Book();
+        model.addAttribute("book", book);
+        return "admin/create_book";
+    }
+
+    @SneakyThrows
+    @PostMapping("/create")
+    public String create(@ModelAttribute("book") Book book) {
+        bookService.saveBook(book);
+        return "redirect:/check_books";
+    }
+
+    /*
+    удаление книги
+     */
+    @GetMapping("/delete_book/{idBook}")
+    public String deleteBook(@PathVariable long idBook) {
+        Book getBook = bookService.getBookById(idBook);
+        getBook.getUserSet().forEach(e->e.setBookSet(null));
+        bookService.deleteBook(getBook);
+        return "redirect:/check_books";
     }
 }

@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.FieldDefaults;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -37,11 +38,11 @@ public class Book {
     @ManyToMany(mappedBy = "bookSet")
     Set<User> userSet = new HashSet<>();
 
-    public Book(String title, String author, String imgBook, String genre) {
+    public Book(String title, String author, String genre, String imgBook) {
         this.title = title;
         this.author = author;
-        this.imgBook = imgBook;
         this.genre = genre;
+        this.imgBook = imgBook;
     }
 
     @Override

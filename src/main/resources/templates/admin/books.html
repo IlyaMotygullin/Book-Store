@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Book List</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        h1 {
+            padding-top: 1.5%;
+            text-align: center;
+            font-size: 30px;
+            font-style: italic;
+        }
+        .book-table {
+            display: flex;
+            flex-direction: column;
+            margin-top: 5%;
+        }
+        .full-width-table {
+            width: 100%;
+            border-collapse: collapse; /* Объединение границ ячеек */
+        }
+        .full-width-table th, .full-width-table td {
+            border: 1px solid #ddd; /* Границы ячеек */
+            padding: 8px; /* Отступы внутри ячеек */
+            text-align: left; /* Выравнивание текста */
+        }
+        .add-button {
+            width: 120px;
+            height: 30px;
+            background-color: blue;
+            color: aliceblue;
+            font-size: 20px;
+        }
+        .add-button:hover {
+            cursor: pointer;
+            border-radius: 5%;
+            background-color: darkblue;
+            color: aliceblue;
+        }
+        .delete-button {
+            width: 120px;
+            height: 30px;
+            background-color: red;
+            color: aliceblue;
+            font-size: 20px;
+        }
+        .delete-button:hover {
+            cursor: pointer;
+            border-radius: 5%;
+            background-color: #670a0a;
+            color: aliceblue;
+        }
+    </style>
+</head>
+<body>
+<h1>Список книг</h1>
+</div>
+<div class="book-table">
+    <table class="full-width-table">
+        <thead>
+        <tr>
+            <th scope="col">Название книги</th>
+            <th scope="col">Автор книги</th>
+            <th scope="col">Изображение</th>
+            <th scope="col">Удалить</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="book:${books}">
+            <td th:text="${book.title}"></td>
+            <td th:text="${book.author}"></td>
+            <td>
+                <img th:src="@{'/book_image/' + ${book.imgBook}}" alt="img-book" width="150">
+            </td>
+            <td>
+                <a th:href="@{/delete_book/{idBook} (idBook=${book.id})}">
+                    <button class="delete-button">Удалить</button>
+                </a>
+            </td>
+        </tr>
+        </tbody>
+    </table><br>
+    <div>
+        <a th:href="@{/create_book}">
+            <button class="add-button">Добавить</button>
+        </a>
+    </div>
+</div>
+</div>
+</div>
+</body>
+</html>

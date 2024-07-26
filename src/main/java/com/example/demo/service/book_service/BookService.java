@@ -9,4 +9,5 @@ public interface BookService {
     Book getBookById(long idBook);
     void saveBook(Book book);
     List<Book> filterBookByGenre(String genre);
+    void deleteBook(Book book);
 }
