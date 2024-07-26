@@ -54,6 +54,23 @@
             background-color: #670a0a;
             color: aliceblue;
         }
+        .button-wrapper {
+            display: flex;
+            justify-content: space-between;
+        }
+        .button-wrapper .exit {
+            width: 120px;
+            height: 30px;
+            background-color: #6969e5;
+            color: aliceblue;
+            font-size: 20px;
+        }
+        .button-wrapper .exit:hover {
+            cursor: pointer;
+            border-radius: 5%;
+            background-color: #3434e3;
+            color: aliceblue;
+        }
     </style>
 </head>
 <body>
@@ -84,10 +101,17 @@
         </tr>
         </tbody>
     </table><br>
-    <div>
-        <a th:href="@{/create_book}">
-            <button class="add-button">Добавить</button>
-        </a>
+    <div class="button-wrapper">
+        <div class="exit">
+            <a th:href="@{/exits}">
+                <button class="exit">Назад</button>
+            </a>
+        </div>
+        <div>
+            <a th:href="@{/create_book}">
+                <button class="add-button">Добавить</button>
+            </a>
+        </div>
     </div>
 </div>
 </div>

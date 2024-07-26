@@ -141,4 +141,12 @@ public class AdminController {
         bookService.deleteBook(getBook);
         return "redirect:/check_books";
     }
+
+    /*
+    exit button(check_books)
+     */
+    @GetMapping("/exits")
+    public String exits() {
+        return "redirect:/check_books";
+    }
 }
